@@ -1,22 +1,19 @@
 on boot
-    # Dokunmatik sürücüsünü uyandırma komutları
-    chown system system /sys/class/input/input*
+    # Tüm input (dokunmatik/tuş) cihazlarına tam yetki ver
+    chown root     system /sys/class/input/input*
     chmod 0660 /sys/class/input/input*
     
-    # Bazı Xiaomi cihazlarda dokunmatik için gereken güç komutu
+    # Güç hatlarını tetikle
     write /sys/class/input/input0/enabled 1
     write /sys/class/input/input1/enabled 1
     write /sys/class/input/input2/enabled 1
-    
-    # MediaTek dokunmatik modüllerini manuel yükle
-    insmod /vendor/lib/modules/mtk_tpd.ko
-    insmod /vendor/lib/modules/focaltech_touch.ko
-    
-    # Dokunmatik servisini başlat
-    start hbtp
+    write /sys/class/input/input3/enabled 1
+    write /sys/class/input/input4/enabled 1
 
-service hbtp /system/bin/hbtp_daemon
-    user root
-    group root
-    disabled
-    seclabel u:r:recovery:s0
+    # MediaTek genel dokunmatik suspend kontrolü
+    chown system system /sys/board_properties/tpd_suspend
+    chmod 0660 /sys/board_properties/tpd_suspend
+
+on property:sys.listeners.registered=true
+    # Burası kernel boot bittikten sonra inputları sisteme bağlar
+    write /sys/class/input/input0/enabled 1
