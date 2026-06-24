@@ -105,14 +105,12 @@ TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 1200
 
 # --- DOKUNMATİK FİX (V8 - KERNEL POWER ON & LIBION) ---
-TW_INPUT_BLACKLIST := ""
 TW_SUPPORT_INPUT_1_2 := true
-TW_INPUT_PROP := "/dev/input/event*"
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 
-# Dokunmatik verisi için gereken kütüphaneler
+# Dokunmatik ve Donanım verisi için gereken kütüphaneler
 TARGET_RECOVERY_DEVICE_MODULES := libion
-TW_RECOVERY_ADDITIONAL_RELINK_FILES := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libion.so
+TW_RECOVERY_ADDITIONAL_RELINK_FILES := /system/lib/libion.so
 
 # MTP Fix
 TW_HAS_MTP := true
@@ -122,7 +120,3 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage
 # MediaTek Settings
 BOARD_HAS_MTK_6762 := true
 BOARD_USES_MTK_HARDWARE := true
-
-# --- GELİŞTİRİCİ İMZASI ---
-TW_DEVICE_VERSION := EFE521_DANDELION_V8
-PRODUCT_MAINTAINER := EFE521
