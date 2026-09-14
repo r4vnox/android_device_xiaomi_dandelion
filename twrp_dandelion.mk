@@ -8,7 +8,7 @@
 # Cihazın temel iskeletini dahil et
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
-# TWRP yapılandırmasını dahil et (Hata veren yer burasıydı, düzelttim)
+# TWRP yapılandırmasını dahil et (hata vardı duzeltildi)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Cihazın kendi make dosyasını dahil et
