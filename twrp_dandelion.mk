@@ -23,7 +23,7 @@ PRODUCT_MANUFACTURER := xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
-# Mimari ayarları (Cihazınla uyumlu hale getirildi)
+# Mimari ayarları (yeni, bu cihazla ilgili sorun cıkarabılıyor. fix şart değil bir ara bakılır.)
 TARGET_ARCH := arm64
 
 PRODUCT_MODEL := dandelion
